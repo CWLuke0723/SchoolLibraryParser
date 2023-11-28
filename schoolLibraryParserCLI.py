@@ -11,7 +11,7 @@ def main():
 
     # Command line parser
     cmdParser = argparse.ArgumentParser(
-        prog="schoolLibraryParser",
+        prog="schoolLibraryParserCLI.py",
         description="Parses data from school library database and formats for easier manipulation"
     )
     cmdParser.add_argument('schoolName', help="The name of the school that the file is being pulled from")
