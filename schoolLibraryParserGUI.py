@@ -1,6 +1,6 @@
 from tkinter import Tk, font, Label, Entry, Button, messagebox, filedialog, END
 import os
-from lib.parser import libraryParser
+from lib.libraryParser import libraryParser
 
 APP_NAME = "School Library Parser"
 VERSION = "v1.0.0"

@@ -1,6 +1,6 @@
 import os
 import argparse
-from lib.parser import libraryParser
+from lib.libraryParser import libraryParser
 
 APP_NAME = "School Library Parser"
 VERSION = "v1.1.0"
