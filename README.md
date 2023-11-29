@@ -61,7 +61,9 @@ It then parses it, and stores the data in a CSV format for easy manipulation and
 There are two versions to this: A CLI version and a GUI (tkinter) version.
 
 ## CLI Version
-This can be run on any PC running Python version `3.7` or higher. Type the following command to run the parser:
+This can be run on any PC running Python version `3.7` or higher. Download the code, then open a command line and run the following:
+- Navigate to the folder containing the code: `cd [path to SchoolLibraryParser folder]` 
+- Type the following command to run the parser:
 ```python
 python schoolLibraryParserCLI.py [-h] schoolName filepath savepath
 ```
