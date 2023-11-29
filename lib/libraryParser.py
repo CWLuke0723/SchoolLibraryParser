@@ -8,7 +8,6 @@ class book(object):
         self.title = ''
         self.type = ''
         self.callNumber = ''
-        self.editorDescription = ''
         self.author = ''
         self.subLocation = ''
         self.series = ''
@@ -24,7 +23,6 @@ class book(object):
             self.title,
             self.type,
             self.callNumber,
-            self.editorDescription,
             self.author,
             self.subLocation,
             self.series,
@@ -47,7 +45,6 @@ class libraryParser(object):
             'Title',
             'Type',
             'Call Number',
-            'Editor Description',
             'Author',
             'Sublocation',
             'Series',
@@ -62,6 +59,8 @@ class libraryParser(object):
         line = line.strip()
         if line.endswith("Open"):
             line = line[:-5]
+        if line.endswith('.'):
+            line = line[:-1]
         book.title = line.strip()
 
     def _getTypeCallNumAuthor(self, line, book):
@@ -76,12 +75,19 @@ class libraryParser(object):
 
         # Get call number and author
         if 'call #:' in data[1].lower():
-            callNum = data[1]
             authorSearch = re.search(r'[A-Za-z]+,\s+[A-Za-z]+\s?([A-Za-z][.]?\s?)*', data[1])
+            callNum = data[1][7:].strip()
             if authorSearch is not None:
                 author = authorSearch.group()
+                iToRemove = callNum.find(author)
+                callNum = callNum[:iToRemove]
         else:  # No call number available, return only the type and author
             author = data[1]
+
+        if callNum.endswith('.'):
+            callNum = callNum[:-1]
+        if author.endswith('.'):
+            author = author[:-1]
 
         book.type = type
         book.callNumber = callNum
@@ -93,7 +99,7 @@ class libraryParser(object):
             book.subLocation = line.split(':')[1].strip()
         elif line.lower().startswith('series'):
             series = line.split(':')[1].strip()
-            if series.endswith(','):
+            if series.endswith(',') or series.endswith('.'):
                 series = series[:-1]
             book.series = series
         elif line.lower().startswith('published'):
