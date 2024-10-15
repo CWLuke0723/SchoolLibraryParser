@@ -84,6 +84,3 @@ __Inputs__
 - Save Directory: The directory to save the results in
 - Save Filename: The name of the file to save the results in. If you do not end this file with `.csv` it will fill it in for you.
 - School: Any text, will be added to every line indicating what school the book is in
-
-# Hours Spent
-8 hours
